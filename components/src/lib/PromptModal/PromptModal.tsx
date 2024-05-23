@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties } from "react";
 import {
   CancelButtonProps,
   CloseButtonProps,
@@ -6,22 +6,22 @@ import {
   ModalSizeProps,
   SubtitleProps,
   TitleProps,
-} from '../interfaces';
-import Modal from '../Modal/Modal';
-import Input from '../Input/Input';
+} from "../interfaces";
+import Modal from "../Modal/Modal";
+import Input from "../Input/Input";
 
 interface PromptModalProps {
   title: TitleProps;
   subtitle?: SubtitleProps;
-  modalPosition: 'center' | 'bottom';
+  modalPosition: "center" | "bottom";
   modalSize: ModalSizeProps;
-  closeButton: Omit<CloseButtonProps, 'display'>;
+  closeButton: Omit<CloseButtonProps, "display">;
   cancelButton: CancelButtonProps;
   confirmButton: ConfirmButtonProps;
-  backgroundColor?: CSSProperties['backgroundColor'];
-  borderRadius?: CSSProperties['borderRadius'];
+  backgroundColor?: CSSProperties["backgroundColor"];
+  borderRadius?: CSSProperties["borderRadius"];
   preventCloseOnOutsideClick?: boolean;
-  buttonsJustifyContent?: CSSProperties['justifyContent'];
+  buttonsJustifyContent?: CSSProperties["justifyContent"];
 }
 
 const PromptModal = ({
@@ -51,32 +51,27 @@ const PromptModal = ({
         cancelButton: {
           ...cancelButton,
           buttonSize: cancelButton.buttonSize || {
-            width: '80px',
-            height: '36px',
+            width: "80px",
+            height: "36px",
           },
         },
         confirmButton: {
           ...confirmButton,
           buttonSize: confirmButton.buttonSize || {
-            width: '80px',
-            height: '36px',
+            width: "80px",
+            height: "36px",
           },
         },
-        buttonsJustifyContent: buttonsJustifyContent || 'flex-end',
-      }}
-      modalContent={{
-        children: (
-          <>
-            <Input onChange={(e) => console.log(e.target.value)} />
-          </>
-        ),
+        buttonsJustifyContent: buttonsJustifyContent || "flex-end",
       }}
       modalPosition={modalPosition}
       modalSize={modalSize}
       backgroundColor={backgroundColor}
       borderRadius={borderRadius}
       preventCloseOnOutsideClick={preventCloseOnOutsideClick}
-    />
+    >
+      <Input onChange={(e) => console.log(e.target.value)} />
+    </Modal>
   );
 };
 

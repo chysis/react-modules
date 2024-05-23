@@ -1,20 +1,20 @@
-import { CSSProperties } from 'react';
-import { CloseButtonProps, ConfirmButtonProps, ModalSizeProps, SubtitleProps, TitleProps } from './../interfaces';
-import Modal from '../Modal/Modal';
-import ModalMessage from '../ModalMessage/ModalMessage';
+import { CSSProperties } from "react";
+import { CloseButtonProps, ConfirmButtonProps, ModalSizeProps, SubtitleProps, TitleProps } from "./../interfaces";
+import Modal from "../Modal/Modal";
+import ModalMessage from "../ModalMessage/ModalMessage";
 
 interface AlertModalProps {
   title: TitleProps;
   subtitle?: SubtitleProps;
   message: string;
-  modalPosition: 'center' | 'bottom';
+  modalPosition: "center" | "bottom";
   modalSize: ModalSizeProps;
-  closeButton: Omit<CloseButtonProps, 'display'>;
+  closeButton: Omit<CloseButtonProps, "display">;
   confirmButton: ConfirmButtonProps;
-  backgroundColor?: CSSProperties['backgroundColor'];
-  borderRadius?: CSSProperties['borderRadius'];
+  backgroundColor?: CSSProperties["backgroundColor"];
+  borderRadius?: CSSProperties["borderRadius"];
   preventCloseOnOutsideClick?: boolean;
-  buttonsJustifyContent?: CSSProperties['justifyContent'];
+  buttonsJustifyContent?: CSSProperties["justifyContent"];
 }
 
 const AlertModal = ({
@@ -44,25 +44,20 @@ const AlertModal = ({
         confirmButton: {
           ...confirmButton,
           buttonSize: confirmButton.buttonSize || {
-            width: '80px',
-            height: '36px',
+            width: "80px",
+            height: "36px",
           },
         },
-        buttonsJustifyContent: buttonsJustifyContent || 'flex-end',
-      }}
-      modalContent={{
-        children: (
-          <>
-            <ModalMessage content={message} position={title.position || 'center'} />
-          </>
-        ),
+        buttonsJustifyContent: buttonsJustifyContent || "flex-end",
       }}
       modalPosition={modalPosition}
       modalSize={modalSize}
       backgroundColor={backgroundColor}
       borderRadius={borderRadius}
       preventCloseOnOutsideClick={preventCloseOnOutsideClick}
-    />
+    >
+      <ModalMessage content={message} position={title.position || "center"} />
+    </Modal>
   );
 };
 

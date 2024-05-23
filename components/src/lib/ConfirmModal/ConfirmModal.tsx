@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties } from "react";
 import {
   CancelButtonProps,
   CloseButtonProps,
@@ -6,24 +6,24 @@ import {
   ModalSizeProps,
   SubtitleProps,
   TitleProps,
-} from '../interfaces';
-import Modal from '../Modal/Modal';
-import ModalMessage from '../ModalMessage/ModalMessage';
+} from "../interfaces";
+import Modal from "../Modal/Modal";
+import ModalMessage from "../ModalMessage/ModalMessage";
 
 interface ConfirmModalProps {
   title: TitleProps;
   subtitle?: SubtitleProps;
   message: string;
-  modalPosition: 'center' | 'bottom';
+  modalPosition: "center" | "bottom";
   modalSize: ModalSizeProps;
-  closeButton: Omit<CloseButtonProps, 'display'>;
+  closeButton: Omit<CloseButtonProps, "display">;
   cancelButton: CancelButtonProps;
   confirmButton: ConfirmButtonProps;
   children?: React.ReactNode;
-  backgroundColor?: CSSProperties['backgroundColor'];
-  borderRadius?: CSSProperties['borderRadius'];
+  backgroundColor?: CSSProperties["backgroundColor"];
+  borderRadius?: CSSProperties["borderRadius"];
   preventCloseOnOutsideClick?: boolean;
-  buttonsJustifyContent?: CSSProperties['justifyContent'];
+  buttonsJustifyContent?: CSSProperties["justifyContent"];
 }
 
 const ConfirmModal = ({
@@ -55,33 +55,28 @@ const ConfirmModal = ({
         cancelButton: {
           ...cancelButton,
           buttonSize: cancelButton.buttonSize || {
-            width: '80px',
-            height: '36px',
+            width: "80px",
+            height: "36px",
           },
         },
         confirmButton: {
           ...confirmButton,
           buttonSize: confirmButton.buttonSize || {
-            width: '80px',
-            height: '36px',
+            width: "80px",
+            height: "36px",
           },
         },
-        buttonsJustifyContent: buttonsJustifyContent || 'flex-end',
-      }}
-      modalContent={{
-        children: (
-          <>
-            <ModalMessage content={message} position={title.position || 'center'} />
-            {children}
-          </>
-        ),
+        buttonsJustifyContent: buttonsJustifyContent || "flex-end",
       }}
       modalPosition={modalPosition}
       modalSize={modalSize}
       backgroundColor={backgroundColor}
       borderRadius={borderRadius}
       preventCloseOnOutsideClick={preventCloseOnOutsideClick}
-    />
+    >
+      <ModalMessage content={message} position={title.position || "center"} />
+      {children}
+    </Modal>
   );
 };
 
