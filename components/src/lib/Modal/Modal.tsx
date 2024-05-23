@@ -5,7 +5,7 @@ import ModalHeader, { ModalHeaderProps } from "../ModalHeader/ModalHeader";
 import ModalContent from "../ModalContent/ModalContent";
 import ModalFooter, { ModalFooterProps } from "../ModalFooter/ModalFooter";
 
-export interface ModalProps extends React.PropsWithChildren {
+export interface ModalProps {
   modalHeader: ModalHeaderProps;
   modalFooter?: ModalFooterProps;
   modalPosition: "center" | "bottom";
@@ -24,7 +24,7 @@ const Modal = ({
   modalPosition,
   preventCloseOnOutsideClick,
   children,
-}: ModalProps) => {
+}: React.PropsWithChildren<ModalProps>) => {
   const modalWidth = (): CSSProperties["width"] | undefined => {
     if (!modalSize) return;
 
@@ -58,7 +58,7 @@ const Modal = ({
         className={styles[`container-${modalPosition}`]}
       >
         <ModalHeader {...modalHeader} />
-        <ModalContent children={children} />
+        <ModalContent>{children}</ModalContent>
         <ModalFooter {...modalFooter} />
       </section>
     </>
